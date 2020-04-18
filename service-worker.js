@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/full-throttle-task/precache-manifest.dd300e5252a57d598a4e4679daa6d672.js"
+  "/full-throttle-task/precache-manifest.d00864932669b5518d0c6f3748a99367.js"
 );
 
 self.addEventListener('message', (event) => {
