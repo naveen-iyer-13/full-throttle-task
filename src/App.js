@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react'
 import { Modal, Table } from 'antd';
 import resourceDayGridPlugin from '@fullcalendar/resource-daygrid';
-import testData from './testData'
+import testData from './testData.js'
 import './App.css';
 
+// Colums used for calendar. The "key" specifies the object key to be rendered.
 let columns = [
   {
     title: 'ID',
@@ -33,17 +34,7 @@ function App(props){
     var date = new Date(timestamp*1000);
     var cHours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
     var cMinutes = date.getMinutes() === 0 ? "00" : date.getMinutes() ;
-
-    if (timestamp !== null) {
-      return [
-        cHours,
-        ":",
-        cMinutes,
-      ].join('');                                  // Glue the pieces together
-    }
-    else {
-      return "";
-    }
+    return [cHours,":",cMinutes].join('');
   }
 
 
