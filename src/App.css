@@ -1,38 +1,66 @@
-.App {
+@import '~antd/dist/antd.css';
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+
+html{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+  color: #FFFFFF;
+  height: 75px;
+  font-size: 40px;
+  line-height: 75px;
+  background-color: #1890ff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.fc-time {
+  display: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.fc-title {
+  font-size: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.ant-modal {
+  height: 500px !important;
+  width: 700px !important;
+  top: 20px !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* .fc {
+  width: 90% !important;
+  height: 70% !important;
+  max-height: 50% !important;
+} */
+
+
+/* .ant-modal-content {
+  width: 100%;
+  height: 90%;
+  max-height: 90%;
+} */
+
+tbody {
+  cursor: pointer;
+}
+
+.hint {
+  color: #007AFF;
+  margin: 20px auto;
+}
+
+.modal-hint {
+  color: #007AFF;
+  margin: 10px auto;
+  font-size: 15px;
+}
+
+
+.table-container {
+  width: 90%;
+  margin: 10px auto;
 }
