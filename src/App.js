@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import LoadingModal from './LoadingModal'
-import { Layout } from 'antd';
-import { Table, Tag } from 'antd';
 import FullCalendar from '@fullcalendar/react'
-import { Modal, Button } from 'antd';
+import { Modal, Table } from 'antd';
 import resourceDayGridPlugin from '@fullcalendar/resource-daygrid';
-import moment from 'moment'
 import testData from './testData'
 import './App.css';
-const { Header } = Layout;
 
 let columns = [
   {
@@ -31,7 +26,6 @@ let columns = [
 function App(props){
 
   const [data, setTestData] = useState(testData.members)
-  const [loadingText, setLoadingText] = useState('')
   const [showDetails, setShowDetails] = useState(false)
   const [selectedRow, setSelectedRow] = useState({})
 
@@ -39,10 +33,6 @@ function App(props){
     var date = new Date(timestamp*1000);
     var cHours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
     var cMinutes = date.getMinutes() === 0 ? "00" : date.getMinutes() ;
-    var AMPM = "PM"
-    if (cHours < 12) {
-      AMPM = "AM"
-    }
 
     if (timestamp !== null) {
       return [
@@ -57,12 +47,12 @@ function App(props){
   }
 
 
-  useEffect(() => {
+  useEffect((d) => {
     var arrangedData = []
     data.forEach((single, id) => {
-      let newActivity = single.activity_periods.map(act => {
+      let newActivity = single.activity_periods.map((act, index) => {
         let title = "" + convertTime(act.start_time)  + " to " + convertTime(act.end_time)
-        return {start: new Date(act.start_time*1000), end: new Date(act.end_time*1000), title: title};
+        return {id: "row-"+index, start: new Date(act.start_time*1000), end: new Date(act.end_time*1000), title: title};
       })
       arrangedData.push({
         ...single,
@@ -77,7 +67,6 @@ function App(props){
     setShowDetails(true)
     let row = data.filter(row => row.index === id)
     setSelectedRow(row[0])
-    console.log(row);
   }
 
   const handleCancel = () => {
@@ -92,6 +81,7 @@ function App(props){
         <p className="hint">Click on any row to get the activity details of the particular user</p>
         <div className="table-container">
           <Table columns={columns} dataSource={data}
+            rowKey="id"
             onRow={(record, rowIndex) => {
               return {
                 onClick: event => {onSelect(record.index)}, // click row
