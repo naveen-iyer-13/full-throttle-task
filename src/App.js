@@ -78,7 +78,7 @@ function App(props){
   return (
     <div className="app">
         <h1 className="header">Members List</h1>
-        <p className="hint">Click on any row to get the activity details of the particular user</p>
+        <p className="hint">Click on any row to get the activity details of that particular user</p>
         <div className="table-container">
           <Table columns={columns} dataSource={data}
             rowKey="id"
